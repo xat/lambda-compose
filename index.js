@@ -9,7 +9,7 @@ module.exports = function lambdaCompose () {
     throw new Error('compose requires at least one middleware')
   }
 
-  return function (context, event, callback) {
+  return function (event, context, callback) {
     const stack = middleware.slice()
 
     function next () {
@@ -18,7 +18,7 @@ module.exports = function lambdaCompose () {
       }
 
       const fn = stack.shift()
-      const ret = fn(context, event, callback, next)
+      const ret = fn(event, context, callback, next)
 
       if (isPromise(ret)) {
         ret

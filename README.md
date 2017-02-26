@@ -13,22 +13,22 @@ lambda-compose adds middleware and promise support to your lambda functions.
 
   // example using callback
   export.myLambdaFunction = compose(
-    (context, event, callback, next) => {
+    (event, context, callback, next) => {
       // jump to next middleware:
       next()
     },
-    (context, event, callback) => {
+    (event, context, callback) => {
       // run the callback of the lambda function
       callback(null, { statusCode: 200, body: 'ok' })
     })
 
   // example using promises
   export.mySecondLambdaFunction = compose(
-    (context, event, callback, next) => {
+    (event, context, callback, next) => {
       // jump to next middleware:
       next()
     },
-    (context, event) => Promise.resolve({ statusCode: 200, body: 'ok' })
+    (event, context) => Promise.resolve({ statusCode: 200, body: 'ok' })
   )
 ```
 
