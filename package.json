@@ -1,0 +1,28 @@
+{
+  "name": "lambda-compose",
+  "version": "1.0.0",
+  "description": "add middleware to your lambda functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xat/lambda-compose.git"
+  },
+  "keywords": [
+    "aws",
+    "lambda",
+    "middleware",
+    "compose"
+  ],
+  "author": "Simon Kusterer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xat/lambda-compose/issues"
+  },
+  "homepage": "https://github.com/xat/lambda-compose#readme",
+  "devDependencies": {
+    "tape": "^4.6.3"
+  }
+}
