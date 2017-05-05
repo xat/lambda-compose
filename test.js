@@ -25,6 +25,18 @@ tape('compose()', function (t) {
     )(null, null, () => t.pass('next middleware gets called'))
   })
 
+  t.test('should call the next middleware function with a new event object', function (t) {
+    t.plan(2)
+
+    compose(
+      (event, context, callback, next) => next({ foo: 'bar' }),
+      (event, context, callback) => {
+        t.equal(event.foo, 'bar')
+        callback()
+      }
+    )(null, null, (event) => t.pass('next middleware gets called'))
+  })
+
   t.test('should call the callback if middleware returns a promise', function (t) {
     t.plan(2)
 

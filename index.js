@@ -12,13 +12,13 @@ module.exports = function lambdaCompose () {
   return function (event, context, callback) {
     const stack = middleware.slice()
 
-    function next () {
+    function next (newEvent) {
       if (!stack.length) {
         throw new Error('compose terminated without the callback function beeing called')
       }
 
       const fn = stack.shift()
-      const ret = fn(event, context, callback, next)
+      const ret = fn(newEvent || event, context, callback, next)
 
       if (isPromise(ret)) {
         ret
