@@ -18,7 +18,8 @@ module.exports = function lambdaCompose () {
       }
 
       const fn = stack.shift()
-      const ret = fn(newEvent || event, context, callback, next)
+      event = newEvent ? newEvent : event;
+      const ret = fn(event, context, callback, next)
 
       if (isPromise(ret)) {
         ret
